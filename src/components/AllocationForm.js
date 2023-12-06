@@ -10,6 +10,11 @@ const AllocationForm = (props) => {
 
     const submitEvent = () => {
 
+            if(isNaN(cost)) {
+                alert("The value must be a number")
+                return;
+            }
+
             if(cost > remaining) {
                 alert("The value cannot exceed remaining funds  £"+remaining);
                 setCost("");
@@ -59,14 +64,16 @@ const AllocationForm = (props) => {
                 <option value="Reduce" name="Reduce">Reduce</option>
                   </select>
 
+                    <span>
                     <input
                         required='required'
-                        type='number'
+                        /* type='number' */
                         id='cost'
                         value={cost}
                         style={{ marginLeft: '2rem' , size: 10}}
                         onChange={(event) => setCost(event.target.value)}>
                         </input>
+                    </span>
 
                     <button className="btn btn-primary" onClick={submitEvent} style={{ marginLeft: '2rem' }}>
                         Save
